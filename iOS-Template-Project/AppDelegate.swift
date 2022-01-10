@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import PluggableAppDelegate
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: PluggableApplicationDelegate {
+    
+    override var services: [ApplicationService] {
+        return [
+            RouterService.shared
+        ]
+    }
 
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -30,7 +35,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
